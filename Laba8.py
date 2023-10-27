@@ -101,8 +101,13 @@ show_all_button.grid(row=0, column=0, padx=5)
 show_best_button = tk.Button(button_frame, text="Показать лучшую комбинацию", command=show_best_combination)
 show_best_button.grid(row=0, column=1, padx=5)
 
-result_text = tk.Text(root, width=60, height=40)
+scrollbar = tk.Scrollbar(root)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+result_text = tk.Text(root, width=60, height=40, yscrollcommand=scrollbar.set)
 result_text.pack(pady=10)
+
+scrollbar.config(command=result_text.yview)
 
 #Код, резмещающий окно по середине экрана
 root.update_idletasks()
